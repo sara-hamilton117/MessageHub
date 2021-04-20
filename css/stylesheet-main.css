@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 2vw;
+}
+
+/* Header */
+
+#nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar {
+    background-image: linear-gradient(to right,#eea019,#7f178d);
+    padding: 0 2em;
+}
+
+.nav-container {
+    padding: 0;
+}
+
+.navbar-brand {
+    color: #fff !important;
+    text-shadow: 2px 2px 4px #000;
+    font-size: x-large;
+}
+
+.navbar-nav li {
+    padding: 0 0.1em;
+}
+
+.navbar-nav li a {
+    color: #fff !important;
+    font-size: medium;
+    font-weight: 400;
+    text-shadow: 2px 2px 5px #000;
+    float: right;
+    text-align: left;
+}
+
+.navbar-toggler {
+    outline: none !important;
+}
+
+/* Banner */
+.container {
+    margin: 0;
+    min-width: 100%;
+}
+
+#banner {
+    background-image: linear-gradient(to right,#eea019,#7f178d);
+    color: #fff;
+    padding-top: 1em;
+    padding-bottom: 1.5em;
+}
+
+.banner-container {
+    padding-left: 2em;
+    padding-right: 4em;
+}
+
+.banner-header {
+    font-size: 1em;
+    margin: 0;
+    padding-top: 1em;
+    text-shadow: 2px 2px 6px #000;
+}
+
+.banner-para {
+    font-size: 0.65em;
+    margin: 0;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    text-shadow: 2px 2px 5px #000;
+}
+
+.img-container1, .img-container2, img.container3 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.index-img1, .index-img2, .index-img3 {
+    max-width: 70%;
+}
+
+.img-container1 img {
+    border-radius: 40px;
+    box-shadow: 4px 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+.signIn-btn {
+    width: 250px;
+    border-radius: 8px;
+    padding: 12px 15px;
+    box-sizing: border-box;
+    font-size: medium;
+    font-weight: 700;
+    color: #7f178d;
+    text-transform: uppercase;
+    border: none;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.signIn-btn:focus, .signIn-btn:active {
+    border: none;
+    outline: none;
+}
+
+/* Modal */
+
+.modal-body, .modal-title {
+    color: #222;
+}
+
+.loginhere {
+    color: #7f178d;
+    font-weight: 500;
+    font-size: medium;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
+
+.form-title {
+    font-size: 30px;
+}
+
+.loginhere-link, .loginhere-link:hover, .loginhere-link:focus {
+    font-weight: 700;
+    color: #222;
+}
+
+.form-submit {
+    width: 100%;
+    border-radius: 0.4em;
+    padding: 17px 20px;
+    box-sizing: border-box;
+    font-size: medium;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    background-image: linear-gradient(to left,#f5cf8e,#b57cbd); 
+}
+
+.form-input {
+    width: 100%;
+    border: 1px solid #ebebeb;
+    border-radius: 0.4em;
+    padding: 17px 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+}
+  
+.form-group {
+    overflow: hidden;
+    margin-bottom: 20px; 
+}
+
+.modal-container {
+    padding: 0;
+}
+
+.signup-content {
+    background: #fff;
+    border-radius: 0.7em;
+    padding: 50px 85px;
+}
+
+/* HowItWorks Section */
+
+#howItWorks {
+    background-color: #EAD6FB;
+    padding: 1em 0;
+    color: #353535;
+}
+
+.hiw-header {
+    font-size: 0.9em;
+    margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hiw-header2 {
+    font-size: 0.7em;
+    margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hiw-para {
+    font-size: 0.6em;
+    margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.hiw-container {
+    padding-left: 1em;
+    padding-right: 5em;
+}
+
+.img-container2 img {
+    border-radius: 30px;
+    box-shadow: 4px 3px 8px rgba(0, 0, 0, 0.35)
+}
+
+/* About Section */
+
+#about {
+    background-color: #f3e4ff;
+    padding: 1em 0;
+    color: #353535;
+}
+
+.index-img3 {
+    max-height: 70%;
+}
+
+.about-container{
+    padding-left: 2em;
+    padding-right: 1em;
+}
+
+/* Footer */
+
+footer {
+    background-color: #f7edff;
+}
+
+footer p{
+    font-size: x-small;
+    margin: 0;
+    padding: 10px;
+     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}

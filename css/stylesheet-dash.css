@@ -1,0 +1,199 @@
+/* Dashboard */
+html, body, main{
+    height: 100%;
+    overflow-y: hidden;
+    font-size: 2vw;
+}
+
+/* Nav Bar */
+.nav-dash {
+    background-image: linear-gradient(to right,#f5cf8e,#b57cbd);
+    padding: 0 1em 0 2em;
+}
+
+.navbar-brand-dash {
+    color: #7f178d !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+    font-size: x-large;
+}
+
+.user-name {
+    color: #fff !important;
+    font-size: medium;
+    font-weight: 400;
+    text-shadow: 2px 2px 5px #000;
+    float: right;
+    text-align: left;
+    margin-right: 1em;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.dash-container{
+    height: 100%;
+    overflow: auto;
+    position: absolute;
+}
+
+.full-row {
+    height: 100%;
+}
+
+/* Left Panel */
+.left-panel{
+    background-color: #f0ebf7;
+}
+
+.svg {
+    height: 55px;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+    cursor: pointer;
+}
+
+.settings {
+    position: fixed;
+    bottom: 0;
+}
+
+.fas, .far {
+    color: #7f178d;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.addNew {
+    background-color: #f8f6fb;
+}
+
+.tab{
+    height: 90px;
+}
+
+/* Center Panel */
+.screen-column {
+    background-color: #f5cf8e;
+}
+
+.center-panel{
+    position: relative;
+}
+
+.card-img-top {
+    height: 70px;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.card-text {
+    font-size: 0.55em;
+    color: #222;
+    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.card {
+    background-color: #f0ebf7;
+    border: none;
+}
+
+.dash-text {
+    font-size: 0.6em;
+    color: #222;
+     text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.addService-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 70px;
+}
+
+.newService {
+    cursor: pointer;
+}
+
+.delete {
+    color: #d14141;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    display: none;
+    cursor: pointer;
+}
+
+.card-holder:hover .delete{
+    display: block;
+}
+
+/* Account Modal */
+
+#account-modal {
+    max-width: 600px;
+}
+
+.account-label {
+    font-size: 0.55em;
+}
+
+.account-content {
+    background: #fff;
+    border-radius: 0.7em;
+    padding: 20px 35px;
+}
+
+.account-submit {
+    width: 40%;
+    border-radius: 0.4em;
+    padding: 17px 20px;
+    box-sizing: border-box;
+    font-size: medium;
+    font-weight: 700;
+    color: #b57cbd;
+    text-transform: uppercase;
+    border: none;
+    background-color: #f0ebf7;
+}
+
+.account-cancel-submit {
+    width: 20%;
+    border-radius: 0.4em;
+    padding: 17px 20px;
+    box-sizing: border-box;
+    font-size: medium;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    background-color: #b57cbd;
+}
+
+.deactivate-heading {
+    font-size: 0.6em;
+}
+
+.deactivate-para {
+    font-size: 0.55em;
+}
+
+.account-deactivate {
+    border-radius: 0.4em;
+    padding: 17px 20px;
+    box-sizing: border-box;
+    font-size: medium;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    background-color: #c35858;
+}
+
+/* Service Modal */
+
+form input[type="file"] {
+    color: yellow;
+}
