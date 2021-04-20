@@ -1,12 +1,14 @@
 <?php
 session_start();
 
-$_SESSION;
+// $_SESSION;
 
 include("connection.php");
 include("functions.php");
 
 $user_data = check_login($con);
+
+// echo count($_SESSION);
 
 ?>
 
@@ -30,17 +32,16 @@ $user_data = check_login($con);
             <nav class="navbar nav-dash navbar-expand-lg navbar-light bg-transparent">
                 <div class="container-fluid nav-container">
                     <a class="navbar-brand navbar-brand-dash" href="#">MessageHub</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item user-name">
-                                Good evening John
+                                Good evening <?php echo $user_data['name']; ?>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Log out</a>
+                                <a class="nav-link" href="logout.php">Log out</a>
                             </li>
                         </ul>
                     </div>
@@ -59,12 +60,6 @@ $user_data = check_login($con);
                         <div class="bd-highlight d-flex align-items-center row tab">
                             <img class="svg p-0" src="assets/svg/teams.svg">
                         </div>
-                        <div class="bd-highlight d-flex align-items-center row tab">
-                            <img class="svg p-0" src="assets/svg/trello.svg">
-                        </div>
-                        <div class="bd-highlight d-flex align-items-center row tab">
-                            <img class="svg p-0" src="assets/svg/messenger.svg">
-                        </div>
                         <div class="bd-highlight d-flex mx-auto row settings">
                             <a href="#accountModal" data-bs-toggle="modal"><i class="fas fa-user p-0 mb-1"></i></a>
                         </div>
@@ -78,22 +73,8 @@ $user_data = check_login($con);
                                     <div class="col card-holder">
                                         <div class="card h-100 p-2">
                                             <i class="fas fa-minus-circle delete"></i>
-                                            <div class="p-2"><img src="assets/svg/teams.svg" class="card-img-top"></div>
+                                            <div class="p-2"><img id="teamssvg" src="assets/svg/teams.svg" class="card-img-top"></div>
                                             <p class="card-text text-center p-1">Microsoft Teams</p>
-                                        </div>
-                                    </div>
-                                    <div class="col card-holder">
-                                        <div class="card h-100 p-2">
-                                            <i class="fas fa-minus-circle delete"></i>
-                                            <div class="p-2"><img src="assets/svg/trello.svg" class="card-img-top"></div>
-                                            <p class="card-text text-center p-1">Trello</p>
-                                        </div>
-                                    </div>
-                                    <div class="col card-holder">
-                                        <div class="card h-100 p-2">
-                                            <i class="fas fa-minus-circle delete"></i>
-                                            <div class="p-2"><img src="assets/svg/messenger.svg" class="card-img-top"></div>
-                                            <p class="card-text text-center p-1">Messenger</p>
                                         </div>
                                     </div>
                                 </div>
@@ -135,6 +116,18 @@ $user_data = check_login($con);
                                         <div class="card h-100 p-2">
                                             <div class="p-2"><img src="assets/svg/hangouts.svg" class="card-img-top"></div>
                                             <p class="card-text text-center p-1">Google Hangouts</p>
+                                        </div>
+                                    </div>
+                                    <div class="col card-holder">
+                                        <div class="card h-100 p-2">
+                                            <div class="p-2"><img src="assets/svg/trello.svg" class="card-img-top"></div>
+                                            <p class="card-text text-center p-1">Trello</p>
+                                        </div>
+                                    </div>
+                                    <div class="col card-holder">
+                                        <div class="card h-100 p-2">
+                                            <div class="p-2"><img src="assets/svg/messenger.svg" class="card-img-top"></div>
+                                            <p class="card-text text-center p-1">Messenger</p>
                                         </div>
                                     </div>
                                     <div class="col card-holder">
@@ -215,23 +208,23 @@ $user_data = check_login($con);
                         <div class="py-2">
                             <h2 class="form-title text-center">Account Settings</h2>
                             <div class="row">
-                                <div class="col-md-6"> 
+                                <div class="col-md-6">
                                     <label for="firstname" class="account-label">Name</label>
-                                    <input type="text"class="form-input" placeholder="John Smith"> 
+                                    <input type="text" class="form-input" placeholder="<?php echo $user_data['name']; ?>">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email" class="account-label">Email Address</label>
-                                    <input type="text" class="form-input" placeholder="john@smith.com">
+                                    <input type="text" class="form-input" placeholder="<?php echo $user_data['email']; ?>">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 pt-md-0 pt-3"> 
-                                    <label for="password" class="account-label">Password</label> 
+                                <div class="col-md-12 pt-md-0 pt-3">
+                                    <label for="password" class="account-label">Password</label>
                                     <input type="password" class="form-input" placeholder="*********">
                                 </div>
                             </div>
                             <div class="py-2 border-bottom">
-                                <button class="account-submit text-wrap">Save Changes</button> 
+                                <button class="account-submit text-wrap">Save Changes</button>
                                 <button class="account-cancel-submit text-wrap">Cancel</button>
                             </div>
                             <div class="d-sm-flex align-items-center pt-1" id="deactivate">
@@ -271,12 +264,12 @@ $user_data = check_login($con);
                             </div>
                             <div class="row">
                                 <div class="col-md-12 pt-md-0 pt-3">
-                                    <label for="fileupload" class="account-label">Select a file:</label> <br>
-                                    <input type="file" id="fileupload" name="fileupload" class="account-label">
+                                    <label for="fileupload" class="account-label">Upload Icon (.svg and .xml only)</label> <br>
+                                    <input type="file" accept="image/svg+xml" id="fileupload" name="fileupload" class="account-label">
                                 </div>
                             </div>
                             <div class="py-2">
-                                <button class="account-submit text-wrap">Add Service</button> 
+                                <button class="account-submit text-wrap">Add Service</button>
                                 <button class="account-cancel-submit text-wrap">Cancel</button>
                             </div>
                         </div>
@@ -288,6 +281,7 @@ $user_data = check_login($con);
     <!-- Modal End -->
 
     <script src="css/bootstrap-5.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>

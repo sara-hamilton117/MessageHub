@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+
+
 include("connection.php");
 include("functions.php");
 
@@ -144,7 +146,7 @@ include("functions.php");
                                 <input type="email" class="form-input" name="email" id="email" placeholder="Your Email" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-input" name="password" id="password" placeholder="Password" />
+                                <input type="password" class="form-input" name="password" id="password" placeholder="Password" />
                             </div>
                             <div class="form-group">
                                 <input type="submit" name="submit" id="submitLogIn" class="form-submit text-wrap" value="Log in" />
