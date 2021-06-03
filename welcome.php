@@ -152,6 +152,7 @@ include("functions.php");
                                 <input type="submit" name="submit" id="submitLogIn" class="form-submit text-wrap" value="Log in" />
                             </div>
                         </form>
+                        <span class="error-msg">Wrong pass</span>
                         <p class="loginhere">
                             Don't have an account? <a href="#signUpModal" data-bs-toggle="modal" data-bs-dismiss="modal" class="loginhere-link">Sign up here</a>
                         </p>

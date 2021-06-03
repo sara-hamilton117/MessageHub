@@ -130,6 +130,10 @@ html {
     margin-bottom: 5px;
 }
 
+.error-msg {
+    font-size: ;
+}
+
 .form-title {
     font-size: 30px;
 }
