@@ -16,7 +16,7 @@ include("functions.php");
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap-5.0/bootstrap-5.0.0-beta2-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/stylesheet-main.css">
+    <link rel="stylesheet" href="css/stylesheet-welcome.css">
     <title>MessageHub</title>
     <link rel="icon" href="assets/images/header.png">
 </head>
