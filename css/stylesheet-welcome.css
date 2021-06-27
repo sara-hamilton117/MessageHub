@@ -117,6 +117,17 @@ html {
 
 /* Modal */
 
+/* #error-msg span {
+    font-size: 8px;
+    color: yellow !important;
+    padding: 0;
+    margin: 0;
+} */
+
+#error-msgSU, #error-msgLI {
+    font-size:14px; padding:0; margin:0; color:#d14141;
+}
+
 .modal-body, .modal-title {
     color: #222;
 }

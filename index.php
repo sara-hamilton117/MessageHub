@@ -16,7 +16,6 @@ $user_data = check_login($con);
 <html lang="en">
 
 <!-- Header Section -->
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +30,6 @@ $user_data = check_login($con);
 </head>
 
 <!-- Body Section -->
-
 <body>
 
     <!-- Main Body of Website -->
