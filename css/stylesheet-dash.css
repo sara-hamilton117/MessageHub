@@ -126,7 +126,21 @@ li {
     cursor: pointer;
 }
 
+.fa-plus-circle {
+    color: #41c5d1;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    display: none;
+    cursor: pointer;
+}
+
 .card-holder:hover .delete{
+    display: block;
+}
+
+.card-holder:hover .fa-plus-circle{
     display: block;
 }
 
@@ -136,6 +150,12 @@ li {
     max-width: 600px;
 }
 
+.account-para {
+    font-size: 0.6em;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
 .account-label {
     font-size: 0.55em;
 }
