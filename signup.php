@@ -17,9 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         mysqli_query($con, $query);
 
-        header("Location: index.php");
+        header("Location:index.php");
         die;
     } else {
         echo "Please enter some valid information!";
     }
 }
+?>
