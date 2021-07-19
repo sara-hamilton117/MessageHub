@@ -71,16 +71,16 @@ $user_data = check_login($con);
                 <div class="row full-row">
 
                     <!-- Left panel -->
-                    <div class="col-1 left-panel d-flex flex-column bd-highlight mb-3 container-fluid">
+                    <div class="col-1 left-panel d-flex flex-column bd-highlight mb-3 container-fluid" id="services-tab">
                         <!-- Add service to dashboard button -->
                         <div class="bd-highlight d-flex align-items-center row tab addNew">
                             <img class="svg p-0" src="assets/svg/plus.svg">
                         </div>
 
                         <!-- Calling PHP file to automatically load user's current services -->
-                        <?php
+                        <!-- <?php
                         include 'current-services-tab.php';
-                        ?>
+                        ?> -->
 
                         <!-- Account Settings button -->
                         <div class="bd-highlight d-flex mx-auto row settings">
@@ -229,7 +229,7 @@ $user_data = check_login($con);
 
     <script src="css/bootstrap-5.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
     <script src="scripts/script.js"></script>
-    <script src="scripts/add-service.js"></script>
+    <script src="scripts/service-script.js"></script>
 </body>
 
 </html>
