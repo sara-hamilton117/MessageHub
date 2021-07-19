@@ -139,7 +139,7 @@ include("functions.php");
                     <div class="signup-content">
 
                         <!-- Sign up form using HTTP POST Method -->
-                        <form action="signup.php" method="POST" id="signup-form" class="signup-form">
+                        <form method="POST" action="signup.php" id="signup-form" class="signup-form">
                             <h2 class="form-title text-center">Create account</h2>
                             <div class="form-group">
                                 <input type="text" class="form-input" name="name" id="nameSU" placeholder="Your Name" />
@@ -154,14 +154,15 @@ include("functions.php");
                                 <input type="password" class="form-input" name="repassword" id="repasswordSU" autocomplete="on" placeholder=" Repeat your password" />
                             </div>
 
-                            <!-- Sign Up buton submits form to server -->
+                            <!-- Sign Up button submits form to server -->
+                            <button type="submit" name="submit" id="submitSignUp" class="form-submit text-wrap" value="Sign up" onclick="return validate()">Sign up</button>
                             <div class="form-group">
-                                <input type="submit" name="submit" id="submitSignUp" class="form-submit text-wrap" value="Sign up" />
+
                             </div>
                         </form>
 
                         <!-- Displays error message if wrong details are given -->
-                        <p id="error-msgSU">Wrong pass SU</p>
+                        <p id="error-msgSU"></p>
 
                         <!-- Log In link if user already has account -->
                         <p class="loginhere">
@@ -193,25 +194,30 @@ include("functions.php");
 
                             <!-- Log In buton submits form to server -->
                             <div class="form-group">
-                                <input type="submit" name="submit" id="submitLogIn" class="form-submit text-wrap" value="Log in" />
+                                <input type="submit" name="submit" id="submitLogIn" class="form-submit text-wrap" value="Log in" onclick="return validate()" />
                             </div>
                         </form>
 
                         <!-- Displays error message if wrong details are given -->
-                        <p id="error-msgLI">wrong pass LI</p>
+                        <p id=" error-msgLI"></p>
 
-                        <!-- Sign Up link if user already has account -->
-                        <p class=" loginhere">
-                            Don't have an account? <a href="#signUpModal" data-bs-toggle="modal" data-bs-dismiss="modal" class="loginhere-link">Sign up here</a>
-                        </p>
+                                <!-- Sign Up link if user already has account -->
+                                <p class=" loginhere">
+                                    Don't have an account? <a href="#signUpModal" data-bs-toggle="modal" data-bs-dismiss="modal" class="loginhere-link">Sign up here</a>
+                                </p>
+                            </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Link to Bootstrap JS -->
-    <script src="css/bootstrap-5.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
+        <!-- Link to Bootstrap JS -->
+        <script src="css/bootstrap-5.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
+
+        <!-- Link to scripts -->
+        <script src="scripts/signup-validation.js"></script>
+        <script src="scripts/login-validation.js"></script>
+
 </body>
 
 </html>

@@ -215,5 +215,5 @@ li {
 /* Service Modal */
 
 form input[type="file"] {
-    color: yellow;
+    color: rgb(255, 0, 0);
 }
