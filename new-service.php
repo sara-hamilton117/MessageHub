@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 
 $response = array("success" => false, "card" => "", "errorMessage" => "");
 
@@ -19,10 +20,10 @@ if (isset($_POST["submit"])) {
     }
 }
 
-// if (file_exists($target_file)) {
-//     $response['errorMessage'] = "Sorry, file already exists.";
-//     $uploadOk = 0;
-// }
+if (file_exists($target_file)) {
+    $response['errorMessage'] = "Sorry, file already exists.";
+    $uploadOk = 0;
+}
 
 if ($_FILES["file"]["size"] > 500000) {
     $response['errorMessage'] = "Sorry, your file is too large.";
@@ -35,7 +36,7 @@ if ($imageFileType != "svg" && $imageFileType != "xml") {
 }
 
 if ($uploadOk == 0) {
-    $response['errorMessage'] = "Sorry, your file was not uploaded.";
+    // $response['errorMessage'] = "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
@@ -68,15 +69,25 @@ if ($uploadOk == 0) {
                     $service_id = $con->insert_id;
 
                     $query = "INSERT INTO serviceuser (user_id, service_id) VALUES ('$id', '$service_id')";
-
+                    // New service created successfully
                     if (mysqli_query($con, $query)) {
-                        echo "Service added";
+
+                        $response['success'] = true;
+
+                        $response['card'] .= '<div class="col card-holder" id="card-' . $service_id  . '">';
+                        $response['card'] .= '<div class="card h-100 p-2">';
+                        $response['card'] .= '<button class="fas fa-minus-circle delete bg-transparent border-0" onclick=removecustomservice(' . $service_id  . ')></button>';
+                        $response['card'] .= '<div class="p-2"><img src=' . $file. ' class="card-img-top" onclick="opensite(\'' . $service_address . '\')"></div>';
+                        $response['card'] .= '<p class="card-text text-center p-1">' . $service_name . '</p>';
+                        $response['card'] .= '</div>';
+                        $response['card'] .= '</div>';
+
+
                     } else {
-                        echo "Not added to serviceuser table";
-                        echo "ERROR: Could not able to execute $query. " . mysqli_error($con);
+                        $response['errorMessage'] = "Not added to serviceuser table $query. " . mysqli_error($con);
                     }
                 } else {
-                    echo "ERROR: Could not able to execute $query. " . mysqli_error($con);
+                    $response['errorMessage'] = "Could not able to execute $query. " . mysqli_error($con);
                 }
             }
         }
@@ -89,4 +100,4 @@ if ($uploadOk == 0) {
     }
 }
 
-
+echo json_encode($response);

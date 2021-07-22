@@ -227,6 +227,9 @@ $user_data = check_login($con);
                                     <button type="button" class="account-cancel-submit text-wrap" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
+
+                            <!-- Displays error message if wrong details are given -->
+                            <p id="error-msgNS"></p>
                         </div>
                     </div>
                 </div>
@@ -258,7 +261,10 @@ $user_data = check_login($con);
 
     <script src="css/bootstrap-5.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
     <script src="scripts/script.js"></script>
+    <script src="scripts/file-validation.js"></script>
     <script src="scripts/service-script.js"></script>
+    
+
 </body>
 
 </html>

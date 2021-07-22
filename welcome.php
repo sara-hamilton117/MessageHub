@@ -142,20 +142,20 @@ include("functions.php");
                         <form method="POST" action="signup.php" id="signup-form" class="signup-form">
                             <h2 class="form-title text-center">Create account</h2>
                             <div class="form-group">
-                                <input type="text" class="form-input" name="name" id="nameSU" placeholder="Your Name"/>
+                                <input type="text" class="form-input" name="name" id="nameSU" placeholder="Your Name" />
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-input" name="email" id="emailSU" placeholder="Your Email"/>
+                                <input type="email" class="form-input" name="email" id="emailSU" placeholder="Your Email" />
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-input" name="password" id="passwordSU" autocomplete="on" placeholder=" Password"/>
+                                <input type="password" class="form-input" name="password" id="passwordSU" autocomplete="on" placeholder=" Password" />
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-input" name="repassword" id="repasswordSU" autocomplete="on" placeholder=" Repeat your password"/>
+                                <input type="password" class="form-input" name="repassword" id="repasswordSU" autocomplete="on" placeholder=" Repeat your password" />
                             </div>
 
                             <!-- Sign Up button submits form to server -->
-                            <button type="submit" name="submit" id="submitSignUp" class="form-submit text-wrap" value="Sign up" onclick="return validate()">Sign up</button>
+                            <button type="submit" name="submit" id="submitSignUp" class="form-submit text-wrap" value="Sign up" onclick="return loginValidate()">Sign up</button>
                             <div class="form-group">
 
                             </div>
@@ -199,24 +199,24 @@ include("functions.php");
                         </form>
 
                         <!-- Displays error message if wrong details are given -->
-                        <p id=" error-msgLI"></p>
+                        <p id="error-msgLI"></p>
 
-                                <!-- Sign Up link if user already has account -->
-                                <p class=" loginhere">
-                                    Don't have an account? <a href="#signUpModal" data-bs-toggle="modal" data-bs-dismiss="modal" class="loginhere-link">Sign up here</a>
-                                </p>
-                            </div>
+                        <!-- Sign Up link if user already has account -->
+                        <p class=" loginhere">
+                            Don't have an account? <a href="#signUpModal" data-bs-toggle="modal" data-bs-dismiss="modal" class="loginhere-link">Sign up here</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Link to Bootstrap JS -->
-        <script src="css/bootstrap-5.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
+    <!-- Link to Bootstrap JS -->
+    <script src="css/bootstrap-5.0/bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
 
-        <!-- Link to scripts -->
-        <script src="scripts/signup-validation.js"></script>
-        <script src="scripts/login-validation.js"></script>
+    <!-- Link to scripts -->
+    <script src="scripts/signup-validation.js"></script>
+    <script src="scripts/login-validation.js"></script>
 
 </body>
 

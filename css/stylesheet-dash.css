@@ -228,5 +228,6 @@ form input[type="file"] {
     height: 30px;
 }
 
-#alertPopup {
+#error-msgNS {
+    font-size:14px; padding:0; margin:0; color:#d14141;
 }

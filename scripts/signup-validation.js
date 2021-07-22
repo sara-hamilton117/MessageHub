@@ -1,9 +1,5 @@
 // Validation function
-
-
-console.log('Validate my effing file bitch');
 function validate() {
-    console.log('Validate me bitch');
     var name = document.getElementById("nameSU").value;
     var email = document.getElementById("emailSU").value;
     var password = document.getElementById("passwordSU").value;

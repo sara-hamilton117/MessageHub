@@ -3,6 +3,7 @@ refreshTab();
 
 var options = { backdrop: true, keyboard: true, focus: true };
 var deleteModal = new bootstrap.Modal(document.getElementById('removeCustomService'), options);
+var serviceModal = new bootstrap.Modal(document.getElementById('serviceModal'), options);
 
 function addservice(service_id) {
     var xmlhttp = new XMLHttpRequest();
@@ -120,44 +121,55 @@ function deleteService(service_id) {
 }
 
 function newService() {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
+    if (validateNewService()){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
 
-        // Logic for successful answer
-        if (this.readyState == 4 && this.status == 200) {
-            if (this.responseText == 'Service added') {                
-                orderCards();
-                refreshTab();
-                checkServicesCount();
-                console.log('service added');
-            }
-            else {
-                showAlert('The service could not be created. Please try again.');
+            // Logic for successful answer
+            if (this.readyState == 4 && this.status == 200) {
                 console.log(this.responseText);
+                var response = JSON.parse(this.responseText);
+
+                if (response['success'] == true) {
+                    document.getElementById('current-services').appendChild(createCard(response['card']));
+                    orderCards();
+                    refreshTab();
+                    checkServicesCount();
+                    serviceModal.hide();
+                }
+                else {
+                    document.getElementById('error-msgNS').innerHTML = response['errorMessage'];
+                }
+            }
+            // Logic if not successful
+            else if (this.readyState == 4 && this.status != 200) {
+                showAlert('An error occured. Please try again.');
+                serviceModal.hide();
             }
         }
-        // Logic if not successful
-        else if (this.readyState == 4 && this.status != 200) {
-            showAlert('An error occured. Please try again.');
-        }
+
+        // Create new header request
+        xmlhttp.open("POST", "new-service.php", true);
+
+        // Creating data variable
+        var fileupload = document.getElementById('fileupload');
+        var service_name = document.getElementById('service_name').value;
+        var service_address = document.getElementById('service_address').value;
+
+        var data = new FormData();
+        data.append('file', fileupload.files[0]);
+        data.append('name', service_name);
+        data.append('address', service_address);
+        // Sends the request with the data to PHP file
+        xmlhttp.send(data);
     }
-
-    // Create new header request
-    xmlhttp.open("POST", "new-service.php", true);
-
-    // Creating data variable
-    var fileupload = document.getElementById('fileupload');
-    var service_name = document.getElementById('service_name').value;
-    var service_address = document.getElementById('service_address').value;
-
-    var data = new FormData();
-    data.append('file', fileupload.files[0]);
-    data.append('name', service_name);
-    data.append('address', service_address);
-    // Sends the request with the data to PHP file
-    xmlhttp.send(data);
-
     return false;
+}
+
+function createCard(cardContent){
+    var template = document.createElement('template');
+    template.innerHTML = cardContent;
+    return template.content.firstChild;
 }
 
 // Function to display banner alert message
