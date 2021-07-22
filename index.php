@@ -203,15 +203,15 @@ $user_data = check_login($con);
                             <p class="text-center account-para">Don't see your service listed? Add your own here.</p>
 
                             <!-- New Service form using HTTP POST Method -->
-                            <form action="new-service.php" method="POST" id="service-form" enctype="multipart/form-data">
+                            <form method="POST" id="service-form" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="servicename" class="account-label">Service Name</label>
-                                        <input type="text" class="form-input" name="name" placeholder="Service Name">
+                                        <input id="service_name" type="text" class="form-input" name="name" placeholder="Service Name">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="serviceaddress" class="account-label">Service Address</label>
-                                        <input type="text" class="form-input" name="address" value="https://">
+                                        <input id="service_address" type="text" class="form-input" name="address" value="https://">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -222,7 +222,7 @@ $user_data = check_login($con);
                                 </div>
                                 <div class="py-2">
                                     <!-- Button to add new service -->
-                                    <button type="submit" class="account-submit text-wrap">Add Service</button>
+                                    <button onclick="return newService()" type="submit" class="account-submit text-wrap">Add Service</button>
                                     <!-- Button to cancel -->
                                     <button type="button" class="account-cancel-submit text-wrap" data-bs-dismiss="modal">Cancel</button>
                                 </div>

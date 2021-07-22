@@ -1,5 +1,9 @@
 refreshTab();
 
+
+var options = { backdrop: true, keyboard: true, focus: true };
+var deleteModal = new bootstrap.Modal(document.getElementById('removeCustomService'), options);
+
 function addservice(service_id) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -77,15 +81,13 @@ function removeservice(service_id) {
 function removecustomservice(service_id) {
     var deleteButton = document.getElementById('delete-service-button');
     deleteButton.setAttribute("onclick", 'deleteService('+service_id+')');
-    var options = { backdrop: true, keyboard: true, focus: true };
-    var myModal = new bootstrap.Modal(document.getElementById('removeCustomService'), options);
-    myModal.toggle();
+    deleteModal.toggle();
 }
 
 // Function to delete custom service
 function deleteService(service_id) {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
 
         // Logic for successful answer
         if (this.readyState == 4 && this.status == 200) {
@@ -95,9 +97,7 @@ function deleteService(service_id) {
                 orderCards();
                 refreshTab();
                 checkServicesCount();
-                var options = { backdrop: true, keyboard: true, focus: true };
-                var myModal = new bootstrap.Modal(document.getElementById('removeCustomService'), options);
-                myModal.hide();
+                deleteModal.hide();
             }
             else {
                 showAlert('The service could not be deleted. Please try again.');
@@ -119,6 +119,48 @@ function deleteService(service_id) {
     xmlhttp.send(data);
 }
 
+function newService() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+
+        // Logic for successful answer
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText == 'Service added') {                
+                orderCards();
+                refreshTab();
+                checkServicesCount();
+                console.log('service added');
+            }
+            else {
+                showAlert('The service could not be created. Please try again.');
+                console.log(this.responseText);
+            }
+        }
+        // Logic if not successful
+        else if (this.readyState == 4 && this.status != 200) {
+            showAlert('An error occured. Please try again.');
+        }
+    }
+
+    // Create new header request
+    xmlhttp.open("POST", "new-service.php", true);
+
+    // Creating data variable
+    var fileupload = document.getElementById('fileupload');
+    var service_name = document.getElementById('service_name').value;
+    var service_address = document.getElementById('service_address').value;
+
+    var data = new FormData();
+    data.append('file', fileupload.files[0]);
+    data.append('name', service_name);
+    data.append('address', service_address);
+    // Sends the request with the data to PHP file
+    xmlhttp.send(data);
+
+    return false;
+}
+
+// Function to display banner alert message
 function showAlert(message) {
     var alertSection = document.getElementById('alert-section');
 
@@ -209,5 +251,37 @@ function checkServicesCount() {
         message.innerHTML = "Select a service from the Available Services to begin using MessageHub.";
         message.classList.add('dash-text', 'm-0', 'pt-3', 'ps-2');
         document.getElementById('current-services').appendChild(message);
+    }
+}
+
+function orderCards() {
+    // Reordering the current services
+    // Getting all card nodes
+    currentCards = document.getElementById('current-services').children;
+    // Creating an array to hold them (currentCards is an HTMLCollection object)
+    var currentCardsToSort = [];
+    // Populate array with objects (node + id as properties)
+    for (let i = 0; i < currentCards.length; i++) {
+        currentCardsToSort.push({ node: currentCards[i], id: currentCards[i].id.slice(5)});
+    }
+    // Sort array by object.id
+    currentCardsToSort.sort(function (a, b) { return a.id - b.id });
+    // Remove all cards from the DOM
+    document.getElementById('current-services').innerHTML = '';
+    // Adding all cards (sorted in the correct order) back in the DOM
+    for (let i = 0; i < currentCardsToSort.length; i++) {
+        document.getElementById('current-services').appendChild(currentCardsToSort[i].node);
+    }
+
+    // Reordering the available services
+    availableCards = document.getElementById('available-services').children;
+    var availableCardsToSort = [];
+    for (let i = 0; i < availableCards.length; i++) {
+        availableCardsToSort.push({ node: availableCards[i], id: availableCards[i].id.slice(5)});
+    }
+    availableCardsToSort.sort(function (a, b) { return a.id - b.id });
+    document.getElementById('available-services').innerHTML = '';
+    for (let i = 0; i < availableCardsToSort.length; i++) {
+        document.getElementById('available-services').appendChild(availableCardsToSort[i].node);
     }
 }

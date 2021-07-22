@@ -1,5 +1,5 @@
 // Validation function
-function validate() {
+function loginValidate() {
     var email = document.getElementById("emailSU").value;
 
     // If email validation fails, display error message

@@ -14,7 +14,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!empty($service_id)) {
         $query = "DELETE FROM `serviceuser` WHERE `user_id` = '$id' AND `service_id` = '$service_id'";
         if (mysqli_query($con, $query)) {
-            echo "Successfully deleted";
+
+            $query = "DELETE FROM `service` WHERE `service_id` = '$service_id'";
+            if (mysqli_query($con, $query)) {
+                echo "Successfully deleted";
+            }
+
+            else {
+                echo "Service could not be deleted from service table: $query. " . mysqli_error($con);
+            }
         }
 
         else{

@@ -194,7 +194,7 @@ include("functions.php");
 
                             <!-- Log In buton submits form to server -->
                             <div class="form-group">
-                                <input type="submit" name="submit" id="submitLogIn" class="form-submit text-wrap" value="Log in" onclick="return validate()" />
+                                <input type="submit" name="submit" id="submitLogIn" class="form-submit text-wrap" value="Log in" onclick="return loginValidate()" />
                             </div>
                         </form>
 
