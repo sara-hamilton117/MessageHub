@@ -6,7 +6,7 @@ global $con;
 
 $id = $_SESSION['user_id'];
 
-$sql = "SELECT service_id, service_name, service_img FROM service WHERE service_id NOT IN (SELECT service_id FROM serviceuser WHERE serviceuser.user_id = '$id')";
+$sql = "SELECT service_id, service_name, service_img, by_default FROM service WHERE service_id NOT IN (SELECT service_id FROM serviceuser WHERE serviceuser.user_id = '$id') AND by_default = 1";
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {

@@ -65,6 +65,13 @@ $user_data = check_login($con);
             </nav>
         </section>
 
+        <section id="alert-section">
+            <!-- <div class="row alert alert-warning alert-dismissible fade show m-0 p-0 text-center" role="alert" id="alertPopup">
+            <p class="m-0 p-0 hiw-para">An error occured, please try again.</p>
+            <button type="button" class="btn-close alert-close p-0" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div> -->
+        </section>
+
         <!-- Container for rest of website -->
         <section id="panels">
             <div class="container-fluid dash-container">
@@ -79,8 +86,8 @@ $user_data = check_login($con);
 
                         <!-- Calling PHP file to automatically load user's current services -->
                         <!-- <?php
-                        include 'current-services-tab.php';
-                        ?> -->
+                                include 'current-services-tab.php';
+                                ?> -->
 
                         <!-- Account Settings button -->
                         <div class="bd-highlight d-flex mx-auto row settings">
@@ -196,30 +203,52 @@ $user_data = check_login($con);
                             <p class="text-center account-para">Don't see your service listed? Add your own here.</p>
 
                             <!-- New Service form using HTTP POST Method -->
-                            <form action="" method="POST" id="service-form">
+                            <form action="new-service.php" method="POST" id="service-form" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="servicename" class="account-label">Service Name</label>
-                                        <input type="text" class="form-input" placeholder="Service Name">
+                                        <input type="text" class="form-input" name="name" placeholder="Service Name">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="serviceaddress" class="account-label">Service Address</label>
-                                        <input type="text" class="form-input" placeholder="web.service.com">
+                                        <input type="text" class="form-input" name="address" value="https://">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 pt-md-0 pt-3">
                                         <label for="fileupload" class="account-label">Upload Icon (.svg and .xml only)</label> <br>
-                                        <input type="file" accept="image/svg+xml" id="fileupload" name="fileupload" class="account-label">
+                                        <input type="file" accept="image/svg+xml" id="fileupload" name="file" class="account-label">
                                     </div>
                                 </div>
                                 <div class="py-2">
                                     <!-- Button to add new service -->
-                                    <button class="account-submit text-wrap">Add Service</button>
+                                    <button type="submit" class="account-submit text-wrap">Add Service</button>
                                     <!-- Button to cancel -->
                                     <button type="button" class="account-cancel-submit text-wrap" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Remove Custom Service Modal -->
+    <div class="modal fade" id="removeCustomService" tabindex="-1" aria-labelledby="removeCustomService" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal">
+            <div class="modal-content">
+                <div class="container modal-container">
+                    <div class="account-content">
+                        <div class="py-2">
+                            <h2 class="form-title text-center">Delete Custom Service</h2>
+                            <p class="text-center account-para">Are you sure you want to delete your custom service?</p>
+                            <div class="py-2 text-center">
+                                <!-- Button to delete custom service -->
+                                <button type="submit" id="delete-service-button" class="account-submit text-wrap">Delete Service</button>
+                                <!-- Button to cancel -->
+                                <button type="button" class="service-cancel-submit text-wrap" data-bs-dismiss="modal">Cancel</button>
+                            </div>
                         </div>
                     </div>
                 </div>

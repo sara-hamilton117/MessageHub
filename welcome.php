@@ -142,16 +142,16 @@ include("functions.php");
                         <form method="POST" action="signup.php" id="signup-form" class="signup-form">
                             <h2 class="form-title text-center">Create account</h2>
                             <div class="form-group">
-                                <input type="text" class="form-input" name="name" id="nameSU" placeholder="Your Name" />
+                                <input type="text" class="form-input" name="name" id="nameSU" placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-input" name="email" id="emailSU" placeholder="Your Email" />
+                                <input type="email" class="form-input" name="email" id="emailSU" placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-input" name="password" id="passwordSU" autocomplete="on" placeholder=" Password" />
+                                <input type="password" class="form-input" name="password" id="passwordSU" autocomplete="on" placeholder=" Password"/>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-input" name="repassword" id="repasswordSU" autocomplete="on" placeholder=" Repeat your password" />
+                                <input type="password" class="form-input" name="repassword" id="repasswordSU" autocomplete="on" placeholder=" Repeat your password"/>
                             </div>
 
                             <!-- Sign Up button submits form to server -->

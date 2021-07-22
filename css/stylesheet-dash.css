@@ -181,6 +181,9 @@ li {
 
 .account-cancel-submit {
     width: 20%;
+}
+
+.service-cancel-submit, .account-cancel-submit {
     border-radius: 0.4em;
     padding: 17px 20px;
     box-sizing: border-box;
@@ -216,4 +219,14 @@ li {
 
 form input[type="file"] {
     color: rgb(255, 0, 0);
+}
+
+/* Alert */
+
+.alert-close {
+    width: 30px;
+    height: 30px;
+}
+
+#alertPopup {
 }
