@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+error_reporting(E_ALL);
+
 require 'connection.php';
 
 global $con;
@@ -9,38 +11,47 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Posting sign up details
     $user_name = $_POST['name'];
     $user_email = $_POST['email'];
-    $password = $_POST['password'];
+    $user_password = $_POST['password'];
 
     // If fields are not empty
-    if (!empty($user_name) && !empty($password) && !empty($user_email)) {
+    if (!empty($user_name) && !empty($user_password) && !empty($user_email)) {
 
-        // Save to database
-        $query = "INSERT INTO user (name,email,password) VALUES ('$user_name','$user_email','$password')";
+        $stmt = $con->prepare("SELECT * FROM user WHERE email = ? LIMIT 1");
+        $stmt->bind_param("s", $user_email);
+        $stmt->execute();
+        $result = $stmt -> get_result();
+        $result_array = $result -> fetch_all();
 
-        mysqli_query($con, $query);
+        if (!empty($result_array)) {
+            echo "Email exists";
+        }
 
-        // Read from database
-        $query = "SELECT * FROM user WHERE email = '$user_email' LIMIT 1";
+        else {
+            // hashing password
+            $hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
 
-        $result = mysqli_query($con,
-            $query
-        );
+            $stmt = $con->prepare("INSERT INTO user (name,email,password) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $user_name, $user_email, $hashed_password);
+            $result = $stmt->execute();
 
-        // If there is a matching result
-        if ($result && mysqli_num_rows($result) > 0) 
-        {
-            $user_data = mysqli_fetch_assoc($result);
+            $stmt = $con->prepare("SELECT * FROM user WHERE email = ? LIMIT 1");
+            $stmt->bind_param("s", $user_email);
+            $result = $stmt->execute();
 
-            if ($user_data['password'] === $password)
-            {
-                // Take the user to the index page
-                $_SESSION['user_id'] = $user_data['user_id'];
-                header("Location:index.php");
-                die;
+            // If there is a matching result
+            if ($result == 1) {
+                /* bind result variables */
+                $stmt->bind_result($user_id, $name, $email, $password);
+                $stmt->fetch();
+
+                if ($password === $hashed_password) {
+                    // Take the user to the index page
+                    $_SESSION['user_id'] = $user_id;
+                    header("Location:index.php");
+                    die;
+                }
             }
         }
-    } else {
-        echo "Please enter some valid information!";
     }
 }
 ?>

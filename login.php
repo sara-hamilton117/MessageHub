@@ -8,28 +8,34 @@ global $con;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Posting login details
     $user_email = $_POST['email'];
-    $password = $_POST['password'];
+    $user_password = $_POST['password'];
 
-    if (!empty($password) && !empty($user_email)) {
+    if (!empty($user_password) && !empty($user_email)) {
         // Read from database
-        $query = "SELECT * FROM user WHERE email = '$user_email' LIMIT 1";
-
-        $result = mysqli_query($con, $query);
+        $stmt = $con->prepare("SELECT * FROM user WHERE email = ? LIMIT 1");
+        $stmt->bind_param("s", $user_email);
+        $result = $stmt->execute();
 
         // If there is a matching result
-        if ($result && mysqli_num_rows($result) > 0) 
+        if ($result == 1) 
         {
-            $user_data = mysqli_fetch_assoc($result);
-            if($user_data['password'] === $password)
-            {
+            $stmt->bind_result($user_id, $name, $email, $password);
+            $stmt->fetch();
+            if (password_verify($user_password, $password)) {
                 // Take the user to the index page
-                $_SESSION['user_id'] = $user_data['user_id'];
+                $_SESSION['user_id'] = $user_id;
                 header("Location:index.php");
                 die;
             }
+            else {
+                echo "Wrong password";
+            }
         }
-        echo "Wrong password";
-    } else {
-        echo "Please enter some valid information!";
+        else {
+            echo "No email found";
+        }
+    } 
+    else {
+        echo "Empty fields";
     }
 }

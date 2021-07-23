@@ -148,7 +148,7 @@ $user_data = check_login($con);
                         <div class="py-2">
 
                             <!-- Account Settings form using HTTP POST Method -->
-                            <form action="" method="POST" id="account-form">
+                            <form method="POST" id="account-form">
                                 <h2 class="form-title text-center">Account Settings</h2>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -177,13 +177,20 @@ $user_data = check_login($con);
                                 <div class="d-sm-flex align-items-center pt-1" id="deactivate">
                                     <div>
                                         <h6 class="deactivate-heading">Delete your account</h6>
-                                        <p class="deactivate-para m-0">Deleting you account will remove all your information, settings and data. You will not be able to log back in.</p>
-                                    </div>
-                                    <div class="ml-auto ms-2">
-                                        <!-- Button to delete account -->
-                                        <button class="account-deactivate p-1">Delete Account</button>
+                                        <p class="deactivate-para m-0">Deleting you account will remove all your information, settings and data. You will not be able to log back in. Please enter your password to continue.</p>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <input id="deletePassword" type="password" class="form-input" placeholder="*********">
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <!-- Button to delete account -->
+                                        <button class="account-deactivate" onclick="return deleteAccount()">Delete Account</button>
+                                    </div>
+                                </div>
+                                <p id="error-msgDA"></p>
                             </form>
                         </div>
                     </div>
@@ -263,7 +270,8 @@ $user_data = check_login($con);
     <script src="scripts/script.js"></script>
     <script src="scripts/file-validation.js"></script>
     <script src="scripts/service-script.js"></script>
-    
+    <script src="scripts/user-script.js"></script>
+
 
 </body>
 

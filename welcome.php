@@ -155,7 +155,7 @@ include("functions.php");
                             </div>
 
                             <!-- Sign Up button submits form to server -->
-                            <button type="submit" name="submit" id="submitSignUp" class="form-submit text-wrap" value="Sign up" onclick="return loginValidate()">Sign up</button>
+                            <button type="submit" name="submit" id="submitSignUp" class="form-submit text-wrap" value="Sign up" onclick="return validate()">Sign up</button>
                             <div class="form-group">
 
                             </div>
@@ -182,19 +182,19 @@ include("functions.php");
                     <div class="signup-content">
 
                         <!-- Log In form using HTTP POST Method -->
-                        <form action="login.php" method="POST" id="login-form" class="signup-form">
+                        <form action="/index.php" onsubmit="return loginValidate()" id=" login-form" class="signup-form" novalidate>
                             <h2 class="form-title text-center">Log In</h2>
 
                             <div class="form-group">
-                                <input type="email" class="form-input" name="email" placeholder="Your Email" />
+                                <input id="email" type="email" class="form-input" name="email" placeholder="Your Email" />
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-input" name="password" autocomplete="on" placeholder=" Password" />
+                                <input id="password" type="password" class="form-input" name="password" autocomplete="on" placeholder=" Password" />
                             </div>
 
                             <!-- Log In buton submits form to server -->
                             <div class="form-group">
-                                <input type="submit" name="submit" id="submitLogIn" class="form-submit text-wrap" value="Log in" onclick="return loginValidate()" />
+                                <input type="submit" name="submit" id="submitLogIn" class="form-submit text-wrap" value="Submit" />
                             </div>
                         </form>
 

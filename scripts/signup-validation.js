@@ -26,7 +26,38 @@ function validate() {
 
     // If all validations pass, proceed to signup.php through form
     else {
-        return true;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+
+            // Logic for successful answer
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.responseText == 'Email exists') {
+                    document.getElementById('error-msgSU').innerHTML = "Account already exists, try logging in instead";
+                    return false;
+                }
+                else {
+                    window.location.href = 'index.php';
+                    return true;
+                }
+            }
+            // Logic if not successful
+            else if (this.readyState == 4 && this.status != 200) {
+                document.getElementById('error-msgSU').innerHTML = "Something went wrong, please try again";
+                return false;
+            }
+        }
+
+        // Create new header request
+        xmlhttp.open("POST", "signup.php", true);
+
+        // Creating data variable
+        var data = new FormData();
+        data.append('email', email);
+        data.append('password', password);
+        data.append('name', name);
+        // Sends the request with the data to PHP file
+        xmlhttp.send(data);
+        return false;
     }
 }
 
