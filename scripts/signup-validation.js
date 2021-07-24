@@ -20,7 +20,7 @@ function validate() {
 
     // If email validation fails, display error message
     else if (emailValidation(email) == false) {
-        document.getElementById('error-msgSU').innerHTML = "Invalid email";
+        document.getElementById('error-msgSU').innerHTML = "Invalid email format";
         return false;
     }
 

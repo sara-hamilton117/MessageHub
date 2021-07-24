@@ -51,7 +51,7 @@ $user_data = check_login($con);
 
                         <!-- Navbar Unordered list -->
                         <ul class="navbar-nav">
-                            <li class="nav-item user-name">
+                            <li class="nav-item user-name" id="nav-user-name">
                                 <!-- Display User's name using PHP -->
                                 Hello <?php echo $user_data['name']; ?>
                             </li>
@@ -150,29 +150,36 @@ $user_data = check_login($con);
                             <!-- Account Settings form using HTTP POST Method -->
                             <form method="POST" id="account-form">
                                 <h2 class="form-title text-center">Account Settings</h2>
+                                <p class="deactivate-para m-0">You can make changes to any of your account details here. Enter your current password to make the change(s).</p>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="firstname" class="account-label">Name</label>
+                                        <label for="name" class="account-label">Name</label>
 
                                         <!-- Text field shows current user's name -->
-                                        <input type="text" class="form-input" placeholder="<?php echo $user_data['name']; ?>">
+                                        <input id="name" type="text" class="form-input" placeholder="<?php echo $user_data['name']; ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="email" class="account-label">Email Address</label>
 
                                         <!-- Text field shows current user's email -->
-                                        <input type="text" class="form-input" placeholder="<?php echo $user_data['email']; ?>">
+                                        <input id="email" type="text" class="form-input" placeholder="<?php echo $user_data['email']; ?>">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12 pt-md-0 pt-3">
-                                        <label for="password" class="account-label">Password</label>
-                                        <input type="password" class="form-input" placeholder="*********">
+                                    <div class="col-md-6 pt-md-0 pt-3">
+                                        <label for="newPassword" class="account-label">New Password</label>
+                                        <input id="newPassword" type="password" class="form-input" placeholder="*********">
                                     </div>
+                                    <div class="col-md-6 pt-md-0 pt-3">
+                                        <label for="oldPassword" class="account-label">Current Password</label>
+                                        <input id="oldPassword" type="password" class="form-input" placeholder="*********">
+                                    </div>
+                                    
                                 </div>
-                                <div class="py-2 border-bottom">
-                                    <button class="account-submit text-wrap">Save Changes</button>
+                                <div class="pt-2 border-bottom">
+                                    <button class="account-submit text-wrap" onclick="return updateAccountSettings()">Save Changes</button>
                                     <button type="button" class="account-cancel-submit text-wrap" data-bs-dismiss="modal">Cancel</button>
+                                    <p id="error-msgAS" class="py-1"></p>
                                 </div>
                                 <div class="d-sm-flex align-items-center pt-1" id="deactivate">
                                     <div>
