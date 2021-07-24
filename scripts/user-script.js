@@ -50,17 +50,15 @@ function updateAccountSettings() {
     var oldPassword = document.getElementById('oldPassword').value;
 
     // If current password is not given
-    if (oldPassword === null && oldPassword === "") {
+    if (oldPassword === null || oldPassword === "") {
         document.getElementById('error-msgAS').innerHTML = "Please enter your current password to make any change(s)";
         return false;
     }
 
     // If no field is filled in
-    else if ((name === null && name === "") && (email === null && email === "") && (newPassword === null && newPassword === "")) {
+    else if ((name === null || name === "") && (email === null || email === "") && (newPassword === null || newPassword === "")) {
         document.getElementById('error-msgAS').innerHTML = "Please fill in the field(s) you want to update";
         return false;
-
-        
     }
 
     else{
@@ -99,12 +97,17 @@ function updateAccountSettings() {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('error-msgAS').innerHTML = "";
                 console.log(this.responseText);
                 if (this.responseText == 'Wrong password') {
                     document.getElementById('error-msgAS').innerHTML = "The password provided is incorrect";
                 }
                 else if (this.responseText == 'Error updating') {
                     document.getElementById('error-msgAS').innerHTML = "An error occured, please try again";
+                }
+
+                else if(this.responseText == "Email exists") {
+                    document.getElementById('error-msgAS').innerHTML = "The email provided is already in use";
                 }
                 else if (this.responseText == "Update successful") {
                     document.getElementById('error-msgAS').innerHTML = "Your details have been updated";
@@ -115,6 +118,9 @@ function updateAccountSettings() {
                         document.getElementById('name').setAttribute("placeholder", name);
                         document.getElementById('name').value = "";
                     }
+                }
+                else{
+                    document.getElementById('error-msgAS').innerHTML = "An error occured";
                 }
             }
             else if (this.readyState == 4 && this.status != 200) {
