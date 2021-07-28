@@ -6,21 +6,35 @@ function validate() {
     var repassword = document.getElementById("repasswordSU").value;
     
     // If name validation fails, display error message
-    if (nameValidation(name) == false) {
-        document.getElementById("error-msgSU").innerHTML = "Name must only contain alphabets";
+    if (name == null || name == "") {
+        document.getElementById("error-msgSU").innerHTML = "Please enter a name";
         return false;
-        
     }
-
-    // If password validation fails, display error message
-    else if (passwordValidation(password, repassword) == false) {
-        document.getElementById('error-msgSU').innerHTML = "Passwords must match and be atleast 4 characters long";
+    
+    else if (nameValidation(name) == false) {
+        document.getElementById("error-msgSU").innerHTML = "Name must only contain alphabets";
         return false;
     }
 
     // If email validation fails, display error message
+    else if (email == null || email == "") {
+        document.getElementById("error-msgSU").innerHTML = "Please enter an email address";
+        return false;
+    }
+
     else if (emailValidation(email) == false) {
         document.getElementById('error-msgSU').innerHTML = "Invalid email format";
+        return false;
+    }
+
+    // If password validation fails, display error message
+    if (password == null || password == "") {
+        document.getElementById("error-msgSU").innerHTML = "Please enter a password";
+        return false;
+    }
+
+    else if (passwordValidation(password, repassword) == false) {
+        document.getElementById('error-msgSU').innerHTML = "Passwords must match and be atleast 4 characters long";
         return false;
     }
 
