@@ -266,8 +266,8 @@ function checkServicesCount() {
     }
 }
 
+// Reordering the current services
 function orderCards() {
-    // Reordering the current services
     // Getting all card nodes
     currentCards = document.getElementById('current-services').children;
     // Creating an array to hold them (currentCards is an HTMLCollection object)
