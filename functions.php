@@ -13,7 +13,7 @@ function check_login($con) {
         }
     }
     header("Location: welcome.php");
-    die ("Beep Login");
+    die();
 }
 
 

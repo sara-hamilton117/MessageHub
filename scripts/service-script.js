@@ -130,13 +130,13 @@ function newService() {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
 
-            // If the response is ready
+            // If the response is ready and ok
             if (this.readyState == 4 && this.status == 200) {
 
-                // Creating variable for JSON response to be recieved
+                // Creating variable for JSON response to be received
                 var response = JSON.parse(this.responseText);
 
-                // If the responce recieved is 'success'
+                // If the value for success == true
                 if (response['success'] == true) {
 
                     // Add the new service in the form of a card
@@ -151,10 +151,11 @@ function newService() {
                     serviceModal.hide();
                 }
                 else {
+                    // Show error to user
                     document.getElementById('error-msgNS').innerHTML = response['errorMessage'];
                 }
             }
-            // If the response is not ready
+            // If the response is ready but not ok
             else if (this.readyState == 4 && this.status != 200) {
 
                 //Show error message
@@ -190,15 +191,17 @@ function createCard(cardContent){
 
 // Function to display banner alert message
 function showAlert(message) {
+
+    // Creating variables
     var alertSection = document.getElementById('alert-section');
-
     var tempDiv = document.createElement('template');
+    // changing the innerHTML of variable
     tempDiv.innerHTML = `<div class="row alert alert-warning alert-dismissible fade show m-0 p-0 text-center" role="alert" id="alertPopup">
-        <p class="m-0 p-0 hiw-para" id="alert-message"> </p>
-            <button type="button" class="btn-close alert-close p-0" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div> `;
+    <p class="m-0 p-0 hiw-para" id="alert-message"> </p>
+        <button type="button" class="btn-close alert-close p-0" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div> `;
+    // Adding node to the current element
     alertSection.appendChild(tempDiv.content.firstChild);
-
     document.getElementById('alert-message').innerHTML = message;
 }
 
@@ -224,12 +227,7 @@ function refreshTab(){
                     tabs.appendChild(tempDiv.content.firstChild);
                 }
             }
-
             tabs.appendChild(account);
-        }
-        // Logic if not successful
-        else {
-            
         }
     }
     // Create new header request

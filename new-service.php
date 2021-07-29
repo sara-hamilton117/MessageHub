@@ -81,9 +81,13 @@ if ($uploadOk != 0) {
                 }
             }
         }
-
-    } else {
+    } 
+    else {
         $response['errorMessage'] = "Sorry, there was an error uploading your file.";
     }
 }
 echo json_encode($response);
+
+
+
+

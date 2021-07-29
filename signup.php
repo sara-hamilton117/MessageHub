@@ -1,8 +1,5 @@
 <?php
 session_start();
-
-error_reporting(E_ALL);
-
 require 'connection.php';
 
 global $con;
