@@ -42,6 +42,7 @@ function deleteAccount() {
     }
 }
 
+// Function to update account
 function updateAccountSettings() {
 
     var name = document.getElementById('name').value;

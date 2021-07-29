@@ -19,14 +19,3 @@ if ($result->num_rows > 0) {
     echo 'no services';
 }
 
-
-
-// if ($result->num_rows > 0) {
-//     while ($row = $result->fetch_assoc()) {
-//         echo '<div class="bd-highlight d-flex align-items-center row tab" onclick="opensite(\''. $row["service_address"].'\')">';
-//         echo '<img class="svg p-0" src='. $row["service_img"] .'>';
-//         echo '</div>';
-//     }
-// } else {
-    
-// }

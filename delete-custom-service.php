@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require 'connection.php';
 
 global $con;
@@ -24,12 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo "Service could not be deleted from service table: $query. " . mysqli_error($con);
             }
         }
-
         else{
             echo "Service could not be deleted from serviceuser table: $query. " . mysqli_error($con);
         }
     }
-
     else {
         echo "Service ID may be empty: $query. " . mysqli_error($con);
     }

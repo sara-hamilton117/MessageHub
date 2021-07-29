@@ -1,8 +1,4 @@
 <?php
-// session_start();
-
-// sleep(5);
-
 function check_login($con) {
     if(isset($_SESSION['user_id']))
     {
@@ -10,12 +6,10 @@ function check_login($con) {
         $query = "SELECT * FROM user WHERE user_id = '$id' limit 1";
         $result = mysqli_query($con, $query);
 
-        
         if($result && mysqli_num_rows($result) > 0)
         {
             $user_data = mysqli_fetch_assoc($result);
-            return $user_data;
-           
+            return $user_data; 
         }
     }
     header("Location: welcome.php");

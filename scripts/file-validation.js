@@ -1,3 +1,4 @@
+// Function to validate new service
 function validateNewService() {
     var name = document.getElementById('service_name').value;
     var address = document.getElementById('service_address').value;

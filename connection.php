@@ -13,7 +13,6 @@ $dbpass = "c5d28f87";
 $dbname = "heroku_64958899b23da1c";
 
 
-
 if (!$con = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname)) 
 {
     die("Failed to connect to DB");

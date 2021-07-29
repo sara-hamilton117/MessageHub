@@ -1,6 +1,5 @@
 <?php
 session_start();
-// error_reporting(0);
 
 $response = array("success" => false, "card" => "", "errorMessage" => "");
 
@@ -34,10 +33,7 @@ if ($imageFileType != "svg" && $imageFileType != "xml") {
     $uploadOk = 0;
 }
 
-if ($uploadOk == 0) {
-    // $response['errorMessage'] = "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
-} else {
+if ($uploadOk != 0) {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
 
         require 'connection.php';
@@ -86,10 +82,7 @@ if ($uploadOk == 0) {
             }
         }
 
-
-
     } else {
-
         $response['errorMessage'] = "Sorry, there was an error uploading your file.";
     }
 }

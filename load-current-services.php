@@ -1,5 +1,4 @@
 <?php
-
 require 'connection.php';
 
 global $con;
@@ -27,11 +26,9 @@ if ($result->num_rows > 0) {
             echo '<p class="card-text text-center p-1">' . $row["service_name"] . '</p>';
             echo '</div>';
             echo '</div>';
-        }
-        
-
-        
+        } 
     }
-}   else {
+}   
+else {
     echo '<h6 class="dash-text m-0 pt-3 ps-2">Select a service from the Available Services to begin using MessageHub.</h6>';
 }

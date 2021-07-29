@@ -120,19 +120,32 @@ function deleteService(service_id) {
     xmlhttp.send(data);
 }
 
+// Function to add New Custom Service
 function newService() {
+
+    // If JS validation passes
     if (validateNewService()){
+
+        // Creating variable
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
 
-            // Logic for successful answer
+            // If the response is ready
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+
+                // Creating variable for JSON response to be recieved
                 var response = JSON.parse(this.responseText);
 
+                // If the responce recieved is 'success'
                 if (response['success'] == true) {
+
+                    // Add the new service in the form of a card
                     document.getElementById('current-services').appendChild(createCard(response['card']));
+
+                    // Order cards
                     orderCards();
+
+                    // Order the left panel
                     refreshTab();
                     checkServicesCount();
                     serviceModal.hide();
@@ -141,8 +154,10 @@ function newService() {
                     document.getElementById('error-msgNS').innerHTML = response['errorMessage'];
                 }
             }
-            // Logic if not successful
+            // If the response is not ready
             else if (this.readyState == 4 && this.status != 200) {
+
+                //Show error message
                 showAlert('An error occured. Please try again.');
                 serviceModal.hide();
             }
@@ -166,6 +181,7 @@ function newService() {
     return false;
 }
 
+// Function to create a new Bootsrap card
 function createCard(cardContent){
     var template = document.createElement('template');
     template.innerHTML = cardContent;
@@ -186,6 +202,7 @@ function showAlert(message) {
     document.getElementById('alert-message').innerHTML = message;
 }
 
+// Function to refresh left panel and reorder tabs
 function refreshTab(){
     var tabs = document.getElementById('services-tab');
     bigPlus = tabs.children[0];
@@ -220,7 +237,7 @@ function refreshTab(){
     xmlhttp.send();
 }
 
-// Function to 
+// Function to swap plus and minus buttons
 function swapButton(service_id, plus){
 
     // Creating variable
