@@ -68,7 +68,7 @@ if ($uploadOk != 0) {
                         $response['card'] .= '<div class="card h-100 p-2">';
                         $response['card'] .= '<button class="fas fa-minus-circle delete bg-transparent border-0" onclick=removecustomservice(' . $service_id  . ')></button>';
                         $response['card'] .= '<div class="p-2"><img src=' . $file . ' class="card-img-top" onclick="opensite(\'' . $service_address . '\')"></div>';
-                        $response['card'] .= '<p class="card-text text-center p-1" id="name-' . $service_name . '>' . $service_name . '</p>';
+                        $response['card'] .= '<p class="card-text text-center p-1" id="name-' . $service_name . '">' . $service_name . '</p>';
                         $response['card'] .= '</div>';
                         $response['card'] .= '</div>';
                     } 
